@@ -3,6 +3,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -34,10 +36,17 @@ public class TodoMVC {
         driver.get(url);
     }
 
-    @Test
-    public void test() throws InterruptedException {
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "Backbone.js",
+            "React",
+            "AngularJS",
+            "Polymer",
+            "Dojo"
+    })
+    public void test(String technology) throws InterruptedException {
 
-        WebElement backboneJSLink = driver.findElement(By.linkText("Backbone.js"));
+        WebElement backboneJSLink = driver.findElement(By.linkText(technology));
         driverWait.until(ExpectedConditions.visibilityOf(backboneJSLink));
         backboneJSLink.click();
 
@@ -64,9 +73,9 @@ public class TodoMVC {
 
     }
 
-    @AfterEach
-    public void exit() {
-        driver.quit();
-    }
+//    @AfterEach
+//    public void exit() {
+//        driver.quit();
+//    }
 
 }
