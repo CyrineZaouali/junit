@@ -1,8 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.*;
@@ -73,9 +70,9 @@ public class TodoMVC {
 
     }
 
-//    @AfterEach
-//    public void exit() {
-//        driver.quit();
-//    }
+    @AfterAll
+    public void exit() {
+        driver.quit();
+    }
 
 }
