@@ -43,30 +43,25 @@ public class TodoMVC {
     })
     public void test(String technology) throws InterruptedException {
 
-        WebElement backboneJSLink = driver.findElement(By.linkText(technology));
-        driverWait.until(ExpectedConditions.visibilityOf(backboneJSLink));
-        backboneJSLink.click();
+        driverWait.until(ExpectedConditions.visibilityOf(By.linkText(technology)));
+        driver.findElement(By.linkText(technology).backboneJSLink.click();
 
-        WebElement todoInput = driver.findElement(By.className("new-todo"));
-        driverWait.until(ExpectedConditions.visibilityOf(todoInput));
-        todoInput.sendKeys("Meet a Friend");
-        todoInput.sendKeys(Keys.ENTER);
+        driverWait.until(ExpectedConditions.visibilityOf(By.className("new-todo")));
+        driver.findElement(By.className("new-todo"))
+            .sendKeys("Meet a Friend");
+            .sendKeys(Keys.ENTER);
+            .sendKeys("Buy Meat");
+            .sendKeys(Keys.ENTER);
+            .sendKeys("Clean the car");
+            .sendKeys(Keys.ENTER);
 
-        todoInput.sendKeys("Buy Meat");
-        todoInput.sendKeys(Keys.ENTER);
-
-        todoInput.sendKeys("Clean the car");
-        todoInput.sendKeys(Keys.ENTER);
-
-        WebElement todoCount = driver.findElement(By.cssSelector(".todo-count > strong"));
-        driverWait.until(ExpectedConditions.textToBePresentInElement(todoCount, "3"));
+        driverWait.until(ExpectedConditions.textToBePresentInElement(By.cssSelector(".todo-count > strong"), "3"));
 
         List<WebElement> toggleCheckbox = driver.findElements(By.className("toggle"));
         toggleCheckbox.get(0).click();
         toggleCheckbox.get(2).click();
 
-        todoCount = driver.findElement(By.cssSelector(".todo-count > strong"));
-        driverWait.until(ExpectedConditions.textToBePresentInElement(todoCount, "1"));
+        driverWait.until(ExpectedConditions.textToBePresentInElement(By.cssSelector(".todo-count > strong"), "1"));
 
     }
 
